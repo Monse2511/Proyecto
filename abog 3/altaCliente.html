@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABOG</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4faff; /* Fondo azul claro con algo más suave */
+            font-family: 'Arial', sans-serif;
+            color: #333; /* Texto más oscuro para mejorar la legibilidad */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #006699; /* Cambiar a un tono azul más oscuro */
+            padding: 20px;
+            color: white;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        header img {
+            height: 80px;
+            width: 80px;
+            vertical-align: middle;
+            border-radius: 50%;
+        }
+        header h1 {
+            display: inline;
+            margin-left: 15px;
+            font-size: 2.2em;
+            font-weight: bold;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        .navbar {
+            background-color: #004d66; /* Un azul más oscuro */
+        }
+        .navbar-nav .nav-link {
+            color: white !important;
+            font-size: 1.1em;
+        }
+        .navbar-nav .nav-link:hover {
+            color: #c4fcff !important;
+        }
+        /* Ajustes para que la barra de navegación esté en una sola línea */
+        .navbar-collapse {
+            justify-content: space-between;
+            align-items: center;
+        }
+        /* Ajustar el tamaño del buscador */
+        .navbar-form input {
+            width: 180px;
+            height: 30px;
+        }
+        .navbar-form button {
+            height: 30px;
+            font-size: 0.9em;
+        }
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            background-color: #f4faff;
+        }
+        .section {
+            flex: 1;
+            margin: 10px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #333;
+            color: white;
+            margin-top: auto;
+            font-size: 1.1em;
+        }
+        footer p {
+            margin: 0;
+        }
+        .calendar {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .calendar table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .calendar th, .calendar td {
+            text-align: center;
+            padding: 15px;
+            border: 1px solid #ddd;
+            font-size: 1.1em;
+        }
+        .calendar th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+        .calendar td {
+            background-color: #f9f9f9;
+        }
+        .calendar td:hover {
+            background-color: #d9f9ff;
+            cursor: pointer;
+        }
+        .navbar-toggler-icon {
+            background-color: white;
+        }
+        
+        .bi-bell::after {
+    content: attr(data-count);
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background: red;
+    color: white;
+    font-size: 0.7em;
+    padding: 2px 6px;
+    border-radius: 50%;
+    display: none; /* Mostrar sólo si hay notificaciones */
+}
+.bi-bell[data-count]:not([data-count="0"])::after {
+    display: inline-block;
+}
+   /* Ajustar el tamaño de los íconos */
+    .navbar-nav .bi {
+        font-size: 1.5rem; /* Puedes ajustar a 2.5rem o más según el tamaño deseado */
+    }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="abog.jpeg" alt="Logo">
+    <h1>Abog</h1>
+</header>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container d-flex justify-content-between align-items-center">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html"><i class="bi bi-house-door"></i></a></li>
+
+                <!-- Gestión de Casos -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="gestion" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Gestión de Casos
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="altaCaso.html">Alta de Caso</a>
+                        <a class="dropdown-item" href="AltaCliente.html">Alta de Cliente</a>
+                    </div>
+                </li>
+
+                <!-- Documentos -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="gestion" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Documentos
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="documentos.html">Documentos Existentes</a>
+                        <a class="dropdown-item" href="documentos2.html">Alta de Documento</a>
+                    </div>
+                </li>
+
+                <li class="nav-item"><a class="nav-link" href="reportes.html">Expedientes</a></li>
+
+                <!-- Pagos y Facturas -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="pagos" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Pagos y Facturas
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="pagos.html">Pagos Recibidos</a>
+                        <a class="dropdown-item" href="facturas.html">Generar mis Facturas</a>
+                        <a class="dropdown-item" href="generafact.html">Genera Facturas a Clientes</a>
+                    </div>
+                </li>
+
+                <!-- Consulta -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="gestion" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Consulta
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="consultar.html">Consulta Casos</a>
+                        <a class="dropdown-item" href="consultar2.html">Consulta Cliente</a>
+                    </div>
+                </li>
+
+                <li class="nav-item"><a class="nav-link" href="calendario.html">Calendario</a></li>
+                <li class="nav-item"><a class="nav-link" href="soporte.html">Soporte</a></li>
+
+                <!-- Barra de búsqueda -->
+                <form class="d-flex ml-3" role="search">
+                    <input class="form-control form-control-lg" type="search" aria-label=".form-control-lg example">
+                    <button class="btn btn-outline-light btn-sm" type="submit"><i class="bi bi-search"></i></button>
+                </form>
+
+
+<!-- Menú de usuario -->
+<li class="nav-item dropdown ml-5">
+    <a class="bi bi-person-circle text-white fs-4" href="gestion" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="pag1.html">Cierre de Sesión</a>
+    </div>
+</li>
+
+<!-- Menú de notificaciones -->
+<li class="nav-item dropdown ml-5">
+    <a class="bi bi-bell text-white fs-4 position-relative" href="#" id="notificationDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="notificationDropdown">
+        <h6 class="dropdown-header">Notificaciones</h6>
+        <div id="notificationList">
+            <!-- Aquí se cargarán las notificaciones -->
+            <p class="dropdown-item text-muted">No hay notificaciones nuevas</p>
+        </div>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item text-center text-primary" href="notificaciones.html">Ver todas</a>
+    </div>
+</li>
+
+
+              
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+  <div class="container mt-5">
+    <h2 class="text-center mb-4">Alta de Cliente</h2>
+    <form id="clienteForm">
+      <fieldset class="mb-4">
+        <legend>Datos Personales</legend>
+        <div class="row">
+          <div class="col-lg-4 col-md-6 col-12 mb-3">
+            <label for="nombre" class="form-label">Nombre (s)</label>
+            <input type="text" class="form-control" id="nombre" required>
+          </div>
+          <div class="col-lg-4 col-md-6 col-12 mb-3">
+            <label for="apellido1" class="form-label">Primer Apellido</label>
+            <input type="text" class="form-control" id="apellido1" required>
+          </div>
+          <div class="col-lg-4 col-md-6 col-12 mb-3">
+            <label for="apellido2" class="form-label">Segundo Apellido</label>
+            <input type="text" class="form-control" id="apellido2" required>
+          </div>
+          <div class="col-lg-4 col-md-6 col-12 mb-3">
+            <label for="curp" class="form-label">CURP</label>
+            <input type="text" class="form-control" id="curp" required>
+          </div>
+          <div class="col-lg-4 col-md-6 col-12 mb-3">
+            <label for="idEstadoCivil" class="form-label">Sexo</label>
+                <select class="form-control" id="tipoDomicilio" required>
+                  <option value="Soltero">Indicar sexo del cliente</option>
+                  <option value="Soltero">Masculino</option>
+                  <option value="Casado">Femenino</option>
+                </select>
+          </div>
+          <div class="col-lg-4 col-md-6 col-12 mb-3">
+            <label for="idEstadoCivil" class="form-label">Estado Civil</label>
+                <select class="form-control" id="tipoDomicilio" required>
+                  <option value="Soltero">Indicar estado clivil del cliente</option>
+                  <option value="Soltero">Soltero</option>
+                  <option value="Casado">Casado</option>
+                  <option value="Casado">Viudo</option>
+                </select>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="mb-3">
+              <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
+              <input type="date" class="form-control" id="fechaNacimiento" required>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="mb-3">
+              <label for="fechaAudiencias" class="form-label">¿El cliente tiene hijos?</label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                  Sí
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                <label class="form-check-label" for="flexRadioDefault2">
+                  No
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="mb-3">
+              <label for="fechaAudiencias" class="form-label">¿El cliente se encuentra laborando actualmente?</label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                  Sí
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                <label class="form-check-label" for="flexRadioDefault2">
+                  No
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-12 mb-3">
+            <label for="curp" class="form-label">Nacionalidad</label>
+            <input type="text" class="form-control" id="nacionalidad" required>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="mb-3">
+              <label for="fechaAudiencias" class="form-label">¿El cliente tiene antecedentes penales?</label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                  Sí
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                <label class="form-check-label" for="flexRadioDefault2">
+                  No
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="mb-3">
+              <label for="fechaAudiencias" class="form-label">¿El cliente padece alguna discapacidad?</label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                  Sí
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                <label class="form-check-label" for="flexRadioDefault2">
+                  No
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-12 mb-3">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+              <label class="form-check-label" for="flexCheckDefault">
+                Marcar si el cliente forma parte de una organización
+              </label>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset class="mb-4">
+        <legend>Datos de Contacto</legend>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-12 mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" required placeholder="ejemplo@mail.com">
+          </div>
+          <div class="col-lg-6 col-md-6 col-12 mb-3">
+            <label for="telefono" class="form-label">Teléfono</label>
+            <input type="text" class="form-control" id="telefono" required placeholder="+(52) 55 xxxx xxxx">
+          </div>
+        </div>
+      </fieldset>
+
+
+      <fieldset class="mb-4">
+        <legend>Dirección</legend>
+        <div class="row">
+          <div class="col-lg-4 col-md-6 col-12 mb-3">
+            <label for="tipoDomicilio" class="form-label">Tipo de Domicilio</label>
+            <select class="form-control" id="tipoDomicilio" required>
+              <option value="Residencial">Residencial</option>
+              <option value="Laboral">Laboral</option>
+            </select>
+          </div>
+          <div class="col-lg-4 col-md-6 col-12 mb-3">
+            <label for="calle" class="form-label">Calle</label>
+            <input type="text" class="form-control" id="calle" required>
+          </div>
+          <div class="col-lg-4 col-md-6 col-12 mb-3">
+            <label for="numeroExterior" class="form-label">Número Exterior</label>
+            <input type="text" class="form-control" id="numeroExterior" required>
+          </div>
+          <div class="col-lg-4 col-md-6 col-12 mb-3">
+            <label for="numeroInterior" class="form-label">Número Interior</label>
+            <input type="text" class="form-control" id="numeroInterior">
+          </div>
+          <div class="col-lg-4 col-md-6 col-12 mb-3">
+            <label for="colonia" class="form-label">Colonia</label>
+            <input type="text" class="form-control" id="colonia" required>
+          </div>
+          <div class="col-lg-4 col-md-6 col-12 mb-3">
+            <label for="municipio" class="form-label">Municipio o Alcaldía</label>
+            <input type="text" class="form-control" id="municipio" required>
+          </div>
+          <div class="col-lg-4 col-md-6 col-12 mb-3">
+            <label for="codigoPostal" class="form-label">Código Postal</label>
+            <input type="text" class="form-control" id="codigoPostal" required>
+          </div>
+          <div class="col-lg-4 col-md-6 col-12 mb-3">
+            <label for="estado" class="form-label">Estado</label>
+            <select class="form-control" id="Estado" required>
+              <option value="Residencial">Seleccionar estado</option>
+              <option value="Laboral">Aguascalientes</option>
+              <option value="Laboral">Baja California</option>
+              <option value="Laboral">Baja California Sur </option>
+              <option value="Laboral">...</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset class="mb-4">
+        <legend>Datos Adicionales</legend>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-12 mb-3">
+            <label for="datosFactura" class="form-label">Datos de Factura</label>
+            <input type="text" class="form-control" id="datosFactura" placeholder="RFC con homoclave" required>
+          </div>
+          <div class="col-lg-6 col-md-6 col-12 mb-3">
+            <label for="datosPago" class="form-label" >Datos de Pago</label>
+            <input type="text" class="form-control" placeholder="Número de tarjeta válido, CLABE, ect." id="datosPago" required>
+          </div>
+        </div>
+        <div class="text-center mt-4">
+          <button type="submit" class="btn btn-success">Guardar Nuevo Cliente</button>
+        </div>
+      </fieldset>
+      </div>
+    </form>
+      </table>
+    </div>
+  </div>
+    </div>
+</div>
+
+
+<footer>
+    <p>©️ 2024 Abog | Equipo 6</p>
+</footer>
+
+<script>
+    // Simulación de notificaciones
+    const notifications = [
+        { id: 1, message: "Nueva cita agendada para el 20 Nov 2024." },
+        { id: 2, message: "Pago recibido de Juan Pérez." }
+    ];
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const bellIcon = document.querySelector('.bi-bell');
+        const notificationList = document.getElementById('notificationList');
+
+        // Actualiza el contador en el ícono
+        const notificationCount = notifications.length;
+        bellIcon.setAttribute('data-count', notificationCount);
+
+        // Actualiza la lista de notificaciones
+        if (notifications.length > 0) {
+            notificationList.innerHTML = notifications.map(notif => `
+                <a class="dropdown-item" href="notificacion_${notif.id}.html">${notif.message}</a>
+            `).join('');
+        }
+    });
+</script>
+
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
