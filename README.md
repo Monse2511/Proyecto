@@ -12,7 +12,7 @@ Este proyecto es una aplicación web diseñada para gestionar diversos aspectos 
 
 ## **Acceso a la plataforma**
 
-Para iniciar sesión, utiliza las siguientes credenciales:
+Para iniciar sesión, utiliza los siguentes usuarios:
 
 - **Usuario:** mon@abog.com  
   **Contraseña:** password1  
